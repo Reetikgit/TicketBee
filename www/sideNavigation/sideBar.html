@@ -2,11 +2,11 @@
     <ul class="second-nav">
        <li>
           <a href="#" class="bg-danger sidebar-user d-flex align-items-center py-4 px-3 border-0 mb-0">
-             <img src="./../img/user1.jpg" class="img-fluid rounded-pill mr-3">
+             <img src="./../img/user2.jpg" style="width: 40px;height:40px;object-fit: cover;" class="img-fluid rounded-pill mr-3">
              <div class="text-white">
-                <h6 class="mb-0">I Am TicketBee</h6>
-                <small>+91 12345-67890</small><br>
-                <span class="f-10 text-white-50">Version 1.32</span>    
+                <h6 class="mb-0" id="user_name">TicketBee User</h6>
+                <small id="email_b"></small><br>
+                <span class="f-10 text-white-50">Version 1.0.0</span>    
              </div>
           </a>
        </li>
@@ -35,6 +35,7 @@
        <li><a href="./../select-seat.html"><i class="icofont-check-circled mr-2"></i> Select Seat</a></li>
        <li><a href="./../payment.html"><i class="icofont-id-card mr-2"></i> Checkout</a></li>
        <li><a href="./../payment-card.html"><i class="icofont-ui-v-card mr-2"></i> Payment</a></li>
+       <li><a id="logout" onclick="logout()"><i class="icofont-ui-v-card mr-2"></i> Logout</a></li>
        <li>
           <a href="#"><i class="icofont-user-alt-3 mr-2"></i> Profile Pages</a>
           <ul>
@@ -112,3 +113,21 @@
        </li>
     </ul>
  </nav>
+
+ <script>
+    
+   firebase.auth().onAuthStateChanged(async function (user) {
+    if (user) {
+      
+      document.getElementById("email_b")
+        ? document.getElementById("email_b").innerHTML = user.email
+        : "..";
+    } else {
+      window.location = "./../auth/get_started.html";
+    }
+    let name= window.localStorage.getItem("name")
+    if(name && name!=""){
+      document.getElementById("user_name").innerHTML=name;
+    }
+  });
+ </script>

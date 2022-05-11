@@ -1,29 +1,121 @@
+<style>
+  #preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  #loader {
+    display: block;
+    position: relative;
+    left: 50%;
+    top: 50%;
+    width: 150px;
+    height: 150px;
+    margin: -75px 0 0 -75px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: #9370db;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+  }
+  #loader:before {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: #ba55d3;
+    -webkit-animation: spin 3s linear infinite;
+    animation: spin 3s linear infinite;
+  }
+  #loader:after {
+    content: "";
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: #ff00ff;
+    -webkit-animation: spin 1.5s linear infinite;
+    animation: spin 1.5s linear infinite;
+  }
+  @-webkit-keyframes spin {
+    0% {
+      -webkit-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+      -ms-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes spin {
+    0% {
+      -webkit-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+      -ms-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+</style>
 <div class="fixed-bottom p-3">
-    <div class="footer-menu row m-0 bg-danger shadow rounded-2">
-       <div class="col-3 p-0 text-center">
-          <a href="./../home.html" class="home text-white active">
-             <span class="icofont-ui-home h5"></span>
-             <p class="mb-0 small">Home</p>
-          </a>
-       </div>
-       <div class="col-3 p-0 text-center">
-          <a href="./../my-ticket.html" class="home text-white">
-             <span class="icofont-ticket h5"></span>
-             <p class="mb-0 small">My Tickets</p>
-          </a>
-       </div>
-       <div class="col-3 p-0 text-center">
-          <a href="./../notification.html" class="home text-white">
-             <span class="icofont-notification h5"></span>
-             <small class="TicketBee-n">4</small>
-             <p class="mb-0 small">Notice</p>
-          </a>
-       </div>
-       <div class="col-3 p-0 text-center">
-          <a href="./../profile.html" class="home text-white">
-             <span class="icofont-user h5"></span>
-             <p class="mb-0 small">Account</p>
-          </a>
-       </div>
+  <div class="footer-menu row m-0 bg-danger shadow rounded-2">
+    <div class="col-3 p-0 text-center">
+      <a href="./../home/home.html" id="home" class="home text-white ">
+        <span class="icofont-ui-home h5"></span>
+        <p class="mb-0 small">Home</p>
+      </a>
     </div>
- </div>
+    <div class="col-3 p-0 text-center">
+      <a href="./../my-ticket.html" id="ticket" class="home text-white">
+        <span class="icofont-ticket h5"></span>
+        <p class="mb-0 small">My Tickets</p>
+      </a>
+    </div>
+    <div class="col-3 p-0 text-center">
+      <a href="./../notification.html" id="notice" class="home text-white">
+        <span class="icofont-notification h5"></span>
+        <small class="TicketBee-n">4</small>
+        <p class="mb-0 small">Notice</p>
+      </a>
+    </div>
+    <div class="col-3 p-0 text-center">
+      <a href="./../profile/profile.html" id="profile" class="home text-white">
+        <span class="icofont-user h5"></span>
+        <p class="mb-0 small">Account</p>
+      </a>
+    </div>
+  </div>
+</div>
+<div id="preloader" style="display: none">
+  <div id="loader"></div>
+</div>
+
+<script>
+  let ids = document.querySelectorAll(".home");
+  var pathArray = window.location.pathname.split("/");
+  for (let i = 0; i < ids.length; i++) {
+    if (pathArray[3].toLowerCase() == "home") {
+      pathArray[3] = "home";
+    }
+    console.log(ids[i].id.toLowerCase(),pathArray[3].toLowerCase())
+    if (ids[i].id.toLowerCase().includes(pathArray[3].toLowerCase().split(".")[0])) {
+       
+      ids[i].classList.add("active");
+     
+    }
+  }
+</script>

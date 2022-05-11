@@ -21,6 +21,79 @@
       <!-- Sidebar CSS -->
       <link href="./../vendor/sidebar/demo.css" rel="stylesheet">
    </head>
+   <style>
+    #preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    #loader {
+      display: block;
+      position: relative;
+      left: 50%;
+      top: 50%;
+      width: 150px;
+      height: 150px;
+      margin: -75px 0 0 -75px;
+      border-radius: 50%;
+      border: 3px solid transparent;
+      border-top-color: #9370db;
+      -webkit-animation: spin 2s linear infinite;
+      animation: spin 2s linear infinite;
+    }
+    #loader:before {
+      content: "";
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      right: 5px;
+      bottom: 5px;
+      border-radius: 50%;
+      border: 3px solid transparent;
+      border-top-color: #ba55d3;
+      -webkit-animation: spin 3s linear infinite;
+      animation: spin 3s linear infinite;
+    }
+    #loader:after {
+      content: "";
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      right: 15px;
+      bottom: 15px;
+      border-radius: 50%;
+      border: 3px solid transparent;
+      border-top-color: #ff00ff;
+      -webkit-animation: spin 1.5s linear infinite;
+      animation: spin 1.5s linear infinite;
+    }
+    @-webkit-keyframes spin {
+      0% {
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+      100% {
+        -webkit-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        transform: rotate(360deg);
+      }
+    }
+    @keyframes spin {
+      0% {
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+      100% {
+        -webkit-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        transform: rotate(360deg);
+      }
+    }
+  </style>
    <body>
       <!-- sign up -->
       <div class="TicketBee-signup">
@@ -32,18 +105,18 @@
             
          </div>
          <div class="p-3">
-            <form action="./home/home.html">
+            <form id="signUp" >
                <div class="form-group">
-                  <label class="text-muted f-10 mb-1">Your Emailss</label>
-                  <input type="email" class="form-control" placeholder="Enter Your Email"  value="example@mail.com">
+                  <label class="text-muted f-10 mb-1">Your Emails</label>
+                  <input type="email" name="email" required="required" class="form-control" placeholder="Enter Your Email"  value="">
                </div>
                <div class="form-group">
                   <label class="text-muted f-10 mb-1">Password</label>
-                  <input type="password" class="form-control" placeholder="Enter Your Password"  value="TicketBee94">
+                  <input type="password" required name="password" class="form-control" placeholder="Enter Your Password" >
                </div>
                <div class="form-group">
                   <label class="text-muted f-10 mb-1">Confirm Password</label>
-                  <input type="password" class="form-control" placeholder="Enter Your Password"  value="TicketBee94">
+                  <input type="password" required name="c_password" class="form-control" placeholder="Enter Your Password"  >
                </div>
                <button type="submit" class="btn btn-danger btn-block TicketBee-btn mb-3 rounded-1 mt-4">CREATE AN ACCOUNT</button>
                <p class="text-muted text-center small">By signing up you agree to our Privacy Policy and Terms.</p>
@@ -61,6 +134,9 @@
             </a> -->
          </div>
       </div>
+      <div id="preloader" style="display: none">
+        <div id="loader"></div>
+      </div>
       <!-- sidebar -->
 
       <!-- Bootstrap core JavaScript -->
@@ -72,6 +148,13 @@
       <script type="text/javascript" src="./../vendor/sidebar/hc-offcanvas-nav.js"></script>
       <!-- Custom scripts for all pages-->
       <script src="./../js/custom.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app-compat.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-firestore-compat.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-auth-compat.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-storage-compat.js"></script>
+      <script src="./../js/firebase.js"></script>
+      <script src="./../js/firebase_crud.js"></script>
+      <script src="./../auth/signUp1.js"></script>
    </body>
 
 <!-- Mirrored from mobileui.store/preview/TicketBee/signup.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 07 Jul 2021 07:30:12 GMT -->

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
    
-<!-- Mirrored from mobileui.store/preview/TicketBee/signin.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 07 Jul 2021 07:30:12 GMT -->
+
 <head>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -20,8 +20,8 @@
       <link href="./../css/custom.css" rel="stylesheet">
       <!-- Sidebar CSS -->
       <link href="./../vendor/sidebar/demo.css" rel="stylesheet">
-   </head>
-   <style>
+</head>
+<style>
     #preloader {
       position: fixed;
       top: 0;
@@ -95,52 +95,30 @@
     }
   </style>
    <body>
-      <!-- sign up -->
-      <div class="TicketBee-signup">
+      <!-- verification -->
+      <div class="TicketBee-verification">
          <div class="TicketBee-header-nav shadow-sm p-3 d-flex align-items-center bg-danger">
             <h5 class="font-weight-normal mb-0 text-white">
-               <a class="text-danger mr-3" href="./../auth/get_started.html"><i class="icofont-rounded-left"></i></a>
-               Sign in to your account
+               </a>
+               Email Verification
             </h5>
-            
+           
          </div>
-         <div class="px-3 pt-3 pb-5">
-            <form id="login">
-              
-               <div class="form-group">
-                  <label class="text-muted f-10 mb-1">Your Email</label>
-                  <input name="email" type="email" class="form-control" placeholder="Enter Your Email"  >
+         <div class="TicketBee-form px-3 py-5 text-center mb-5">
+            <form id="verify" >
+               <div class="row my-5 px-3 pb-2">
+                  <p>A verification mail has been sent on your registered email id .<br>Please verify your email and click on continue button to proceed </p>
                </div>
-               <div class="form-group">
-                  <label class="text-muted f-10 mb-1">Password</label>
-                  <input name="password" type="password" class="form-control" placeholder="Enter Your Password"  >
-               </div>
-               <div class="text-right mb-3">
-                  <a href="./../change-password.html" class="text-muted small">Forgot your password?</a>
-               </div>
-               <button type="submit" class="btn btn-danger btn-block TicketBee-btn mb-4 rounded-1">SIGN IN</button>
+               <button type="submit" name="submit_button" class="btn btn-danger btn-block TicketBee-btn mb-4" id="btnTxt">Continue</button>
+               <p class="text-muted">Didn't receive it?<a href="#" class="ml-2 text-danger" id="resend">Resend</a></p>
             </form>
-            <!-- <div class="sign-or d-flex align-items-center justify-content-center mb-4">
-               <hr class="mr-4">
-               <p class="text-muted text-center py-2 m-0">OR</p>
-               <hr class="ml-4">
-            </div>
-            <a href="./../verification.html" class="btn btn-block rounded-1 google-btn TicketBee-social">
-            <i class="icofont-google-plus"></i> LOGIN WITH GOOGLE
-            </a>
-            <a href="./../verification.html" class="my-3 btn btn-block rounded-1 fb-btn TicketBee-social">
-            <i class="icofont-facebook"></i> LOGIN WITH FACEBOOK
-            </a> -->
-            <div class="TicketBee-signin text-center p-1">
-               <p class="m-0">Not a member ? <a href="./../auth/signup.html" class="text-danger ml-2">Sign Up</a></p>
-            </div>
          </div>
       </div>
       <div id="preloader" style="display: none">
         <div id="loader"></div>
       </div>
       <!-- sidebar -->
-      
+     
       <!-- Bootstrap core JavaScript -->
       <script src="./../vendor/jquery/jquery.min.js"></script>
       <script src="./../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -156,9 +134,8 @@
       <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-storage-compat.js"></script>
       <script src="./../js/firebase.js"></script>
       <script src="./../js/firebase_crud.js"></script>
-      <script src="./../auth/login1.js"></script>
-
+      <script src="./../auth/verification1.js"></script>
    </body>
+   
 
-<!-- Mirrored from mobileui.store/preview/TicketBee/signin.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 07 Jul 2021 07:30:12 GMT -->
 </html>

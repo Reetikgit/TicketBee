@@ -7,7 +7,9 @@ Version: 0.1
 $("#sideNav").load("./../sideNavigation/sideBar.html");
 $("#bottomNav").load("./../bottomNavigation/bottomNavigation.html");
 setTimeout(function(){
+
     (function($) {
+        
         "use strict"; // Start of use strict
     
         // Tooltip
@@ -98,7 +100,10 @@ setTimeout(function(){
     
     
     })(jQuery); // End of use strict
+
+  
 },1000)
+
 
 
 
