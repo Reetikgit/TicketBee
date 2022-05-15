@@ -5,6 +5,8 @@ setTimeout(function () {
   if (user!="") {
     if(email_verified && email_verified=="true"){
         window.location = "./../home/home.html";
+    }else if(user==undefined || user == null){
+        window.location = "./../information/info.html";
     }else{
         window.location = "./../auth/verification.html";
     }
