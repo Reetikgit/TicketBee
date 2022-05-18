@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />  <link rel="icon" href="./../assets/images/logo.png">
+    <title>Manage Employee</title>
+
+    <link rel="stylesheet" href="../assets/css/bootstrap.css" />
+
+    <link
+      rel="stylesheet"
+      href="../assets/vendors/simple-datatables/style.css"
+    />
+
+    <script defer src="../assets/fontawesome/js/all.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="../assets/vendors/perfect-scrollbar/perfect-scrollbar.css"
+    />
+    <link rel="stylesheet" href="../assets/css/app.css" />
+    <style type="text/css">
+      .notif:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+      }
+      #map {
+        height: 600px;
+        width: 100%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app">
+      <div id="sidebar" class="active"></div>
+      <div id="main">
+        <div id="topBar"></div>
+        <div class="main-content container-fluid">
+          <div class="page-title">
+            <div class="row">
+              <div class="col-12 col-md-6 order-md-1 order-last">
+                <h3>Location</h3>
+              </div>
+              <div class="col-12 col-md-6 order-md-2 order-first">
+                <nav aria-label="breadcrumb" class="breadcrumb-header">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                      <a href="../root/index.html" class="text-success"
+                        >Dashboard</a
+                      >
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                      View Attendance
+                    </li>
+                  </ol>
+                </nav>
+              </div>
+            </div>
+          </div>
+          <div id="map"></div>
+        </div>
+      </div>
+    </div>
+    <script>
+      async function initMap() {
+        var url_string = window.location.href;
+        var url = new URL(url_string);
+        id = url.searchParams.get("id");
+        let res = await db
+          .collection("attendance")
+          .doc(new Date().toUTCString().slice(5, 16))
+          .collection(id)
+          .doc(id)
+          .get();
+        var val = res.data();
+        var location = { lat: val.punched_times[val.punched_times.length-1].latitude, lng: val.punched_times[val.punched_times.length-1].longitude };
+        console.log(location)
+        var map = new google.maps.Map(document.getElementById("map"), {
+          zoom: 15,
+          center: location,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
+        const infowindow = new google.maps.InfoWindow();
+        var marker = new google.maps.Marker({
+          position: location,
+          map: map,
+          // icon: {
+          //   path: google.maps.SymbolPath.CIRCLE,
+          //   fillColor: "#00F",
+          //   fillOpacity: 1,
+          //   strokeColor: "#00A",
+          //   strokeOpacity: 0.9,
+          //   strokeWeight: 1,
+          //   scale: 3,
+          // },
+        });
+          infowindow.setContent("Employee Here");
+          infowindow.open(map, marker);
+        // google.maps.event.addListener(marker, 'click', (function(marker) {
+        // return function() {
+        //   infowindow.setContent(position);
+        //   infowindow.open(map, marker);
+        // }
+        // }))
+      
+        setTimeout(function () {
+        const geocoder = new google.maps.Geocoder();
+      
+       // geocodeLatLng(geocoder, map, infowindow,val);
+      },1000);
+      }
+
+
+      function geocodeLatLng(geocoder, map, infowindow,val) {
+       
+        const latlng = {
+          lat: val.latitude,
+          lng: val.longitude,
+        };
+
+        geocoder
+          .geocode({ location: latlng })
+          .then((response) => {
+            if (response.results[0]) {
+              map.setZoom(11);
+
+              const marker = new google.maps.Marker({
+                position: latlng,
+                map: map,
+              });
+
+              infowindow.setContent(response.results[0].formatted_address);
+              infowindow.open(map, marker);
+            } else {
+              window.alert("No results found");
+            }
+          })
+          .catch((e) => window.alert("Geocoder failed due to: " + e));
+      }
+    </script>
+    <script src="../assets/js/jq.min.js"></script>
+    <script src="../assets/js/feather-icons/feather.min.js"></script>
+    <script src="../assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="../assets/js/app.js"></script>
+    <script src="../assets/vendors/simple-datatables/simple-datatables.js"></script>
+    <script src="../assets/js/vendors.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/common.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-storage-compat.js"></script>
+    <script src="./../assets/js/firebase.js"></script>
+    <script src="./../assets/js/firebase_crud.js"></script>
+    <script
+      async
+      defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC3uZYZ1bJtNBnfYEbSX2T2qJwGQZ6u5TU&callback=initMap"
+    ></script>
+    <!-- <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly&channel=2"
+    async
+  ></script> -->
+  </body>
+</html>

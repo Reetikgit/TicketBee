@@ -4,6 +4,7 @@ firebase.auth().onAuthStateChanged(async function (user) {
     window.location = "./../auth/get_started.html";
   }
 });
+document.getElementById("preloader").style.display = "block";
 let places_data;
 const displayplaces = async (e) => {
   let Dbdata = await getDbCollData("places");
@@ -31,7 +32,10 @@ const displayplaces = async (e) => {
   });
 
   let Dbdata2 = await getDbCollData("buses");
+  let Dbdata3 = await getDbCollData("tickets");
   window.localStorage.setItem("bus_list",JSON.stringify(Dbdata2.data))
+  window.localStorage.setItem("tickets",JSON.stringify(Dbdata3.data))
+  document.getElementById("preloader").style.display = "none";
 };
 setTimeout(function () {
   displayplaces();
