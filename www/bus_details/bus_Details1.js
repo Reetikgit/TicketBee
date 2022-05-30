@@ -66,6 +66,5 @@ document.getElementById("book_seat").addEventListener("click",function(){
     window.location="./../select_seat/select_seat.html?id="+id+"&date="+date+""
 })
 document.getElementById("step_back").addEventListener("click", function () {
-    window.location =
-      "./../listing/listing.html?origin="+ origin +"&destination="+ destination+"&date="+date;
+    window.location ="./../listing/listing.html?origin="+ origin +"&destination="+ destination+"&date="+date+"";
   });

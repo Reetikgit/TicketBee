@@ -30,12 +30,12 @@ const displayplaces = async (e) => {
 
     //$("#destination :selected").remove()
   });
-
+  document.getElementById("preloader").style.display = "none";
   let Dbdata2 = await getDbCollData("buses");
   let Dbdata3 = await getDbCollData("tickets");
   window.localStorage.setItem("bus_list",JSON.stringify(Dbdata2.data))
   window.localStorage.setItem("tickets",JSON.stringify(Dbdata3.data))
-  document.getElementById("preloader").style.display = "none";
+
 };
 setTimeout(function () {
   displayplaces();

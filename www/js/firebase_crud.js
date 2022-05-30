@@ -524,6 +524,10 @@ const logout = async () => {
     .then(function () {
       // Sign-out successful.
       window.localStorage.setItem("user","")
+      window.localStorage.removeItem("bus_list")
+      window.localStorage.removeItem("tickets")
+      window.localStorage.removeItem("email")
+      window.localStorage.removeItem("booking_data")
       window.close();
       window.open(
         "./../auth/login.html", "_blank");
