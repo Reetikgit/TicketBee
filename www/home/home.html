@@ -23,6 +23,44 @@
       <!-- Sidebar CSS -->
       <link href="./../vendor/sidebar/demo.css" rel="stylesheet">
    </head>
+   <style>
+         .subtitle {
+  font-size: 1.25em;
+  opacity: 0.65;
+}
+.scrolling-wrapper {
+  overflow-x: auto;
+}
+.scrolling-wrapper::-webkit-scrollbar {
+  display: none;
+}
+.card-block {
+  height: 100px;
+  background-color: #ffffff;
+  width: 140px;
+  background-position: center;
+  background-size: cover;
+  transition: all 0.2s ease-in-out !important;
+  border-radius: 10px;
+  border: 1px solid #b97f33;
+}
+.card-block:hover {
+  transform: translateY(-5px);
+  box-shadow: none;
+  opacity: 0.9;
+}
+
+
+.card-9 {
+  background-color: #4158D0;
+  background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+}
+
+.card-10 {
+  background-color: #FF3CAC;
+  background-image: linear-gradient(225deg, #FF3CAC 0%, #784BA0 50%, #2B86C5 100%);
+}
+   </style>
    <body class="bg-light">
       <!-- verification -->
       <div class="TicketBee-verification padding-bt">
@@ -30,7 +68,7 @@
             <div class="font-weight-normal mb-0 d-flex align-items-center">
                <img src="./../img/logo.png" class="img-fluid TicketBee-nav-logo">
                <div class="ml-auto d-flex align-items-center">
-                  <a href="./../profile.html" class="mr-3"><img src="./../img/user2.jpg" class="img-fluid rounded-circle"></a>
+                  <a href="./../profile/profile.html" class="mr-3"><img src="./../img/user2.jpg" class="img-fluid rounded-circle"></a>
                   <a class="toggle TicketBee-toggle h4 m-0 text-white ml-auto" href="#"><i class="icofont-navigation-menu"></i></a>
                </div>
             </div>
@@ -58,7 +96,16 @@
                </form>
             </div>
          </div>
-         <div class="p-3 bg-warning">
+         <div class="p-3 bg-light">
+            <h6 class="text-center"  id="ML_PART">Book your travel for</h6>
+            <div class="row m-0" >
+         
+               <div class="scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4 pt-2" id="suggestions">
+			
+               
+                  
+             </div>
+            </div>
             <div class="row m-0">
                <div class="col-6 py-1 pr-1 pl-0">
                   <div class="p-3 bg-white shadow-sm rounded-1">

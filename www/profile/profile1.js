@@ -49,9 +49,10 @@ async function getData() {
     docId: window.localStorage.getItem("user"),
   });
   let data = Dbdata.data;
-  form["name"].value = data.name;
+
+  form["name"].value = data.name ?data.name:"";
   form["number"].value = data.number;
-  form["address"].value = data.address;
+  form["address"].value = data.address ? data.address:"";
   form["email"].value = data.email;
   if (data.gender == "male") {
     document.getElementById("Male").checked = true;
